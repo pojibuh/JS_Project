@@ -16,7 +16,7 @@ Are contained in this repository.
 
 ## Implementation Timeline
 
-Day 1: Research and write algorithms
+Day 1: Research and understand how to use D3 to visualize a maze
 
 Day 2: Make mazes based on cities
 

@@ -1,0 +1,27 @@
+{
+  "name": "JS_Project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pojibuh/JS_Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pojibuh/JS_Project/issues"
+  },
+  "homepage": "https://github.com/pojibuh/JS_Project#readme",
+  "dependencies": {
+    "webpack": "^2.4.1"
+  }
+}
