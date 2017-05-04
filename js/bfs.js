@@ -1,5 +1,5 @@
-const bfs = () => {
-  debugger
+const bfs = function () {
+
   var width = 800,
       height = 500;
 
@@ -96,4 +96,6 @@ const bfs = () => {
   }
 
   d3.select(self.frameElement).style("height", height + "px");
-}
+};
+
+module.exports = bfs;

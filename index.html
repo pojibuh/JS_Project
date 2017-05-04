@@ -5,8 +5,6 @@
     <title>JS_Project</title>
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./index.css" type="text/css"/>
-    <script src="js/buttons.js" type="application/javascript"></script>
-    <script src="js/bundle.js" type="application/javascript"></script>
   </head>
   <body>
     <div class="main-page">
@@ -16,18 +14,18 @@
           <h3>
             Settings go here
           </h3>
-          <button id ="algo" onclick="dfs()">Run Algorithm</button>
+          <button id ="algo">Run Algorithm</button>
         </div>
       </div>
       <div class="algo-toggle">
         <h3>Algorithms</h3>
-        <button onclick="switchToDFS()">DFS</button>
-        <button onclick="switchToBFS()">BFS</button>
+        <button id="dfs">DFS</button>
+        <button id="bfs">BFS</button>
       </div>
       <div class="info-space">
         <h3>Personal Links</h3>
       </div>
     </div>
+    <script src="js/bundle.js" type="application/javascript"></script>
   </body>
-  <script id="swag" src="js/practice.js" type="application/javascript"></script>
 </html>

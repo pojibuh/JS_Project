@@ -1,4 +1,5 @@
-const dfs = () => {
+const dfs = function () {
+
   var width = 800,
       height = 500;
 
@@ -101,4 +102,6 @@ const dfs = () => {
 
   d3.select(self.frameElement).style("height", height + "px");
 
-}
+};
+
+module.exports = dfs;
