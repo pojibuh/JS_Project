@@ -4,7 +4,6 @@ class Cell {
     this.x = x;
     this.y = y;
     this.visited = false;
-    this.children = [];
     this.n = [this.x + 1, this.y];
     this.e = [this.x, this.y + 1];
     this.w = [this.x, this.y - 1];
@@ -17,10 +16,6 @@ class Cell {
 
   visited() {
     return this.visited;
-  }
-
-  addChild(node) {
-    this.children.push(node)
   }
 
 }

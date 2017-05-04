@@ -2,22 +2,22 @@ class Generator {
 
   constructor(grid) {
     this.grid = grid;
-    this.currentCell = grid[randomize(grid.dimX)][randomize(grid.dimY)];
+    this.currentCell = grid[this.randomize(grid.dimX)][this.randomize(grid.dimY)];
     this.currentCell.visit();
     this.run();
   }
 
   pickDirection() {
-    let guess = randomize(4);
+    let guess = this.randomize(4);
     switch(guess) {
       case 0:
-        return this.currentCell.N;
+        return this.currentCell.n;
       case 1:
-        return this.currentCell.E;
+        return this.currentCell.e;
       case 2:
-        return this.currentCell.W;
+        return this.currentCell.w;
       case 3:
-        return this.currentCell.S;
+        return this.currentCell.s;
     }
   }
 
@@ -25,12 +25,12 @@ class Generator {
     return Math.floor(Math.random() * num)
   }
 
-  getNeighbors() {
+  getNeighbors(cell) {
     let neighbors = [];
-    let n = this.grid[this.currentCell.N[0]][this.currentCell.N[1]];
-    let w = this.grid[this.currentCell.W[0]][this.currentCell.W[1]];
-    let e = this.grid[this.currentCell.E[0]][this.currentCell.E[1]];
-    let s = this.grid[this.currentCell.S[0]][this.currentCell.S[1]];
+    let n = this.grid[cell.N[0]][cell.N[1]];
+    let w = this.grid[cell.W[0]][cell.W[1]];
+    let e = this.grid[cell.E[0]][cell.E[1]];
+    let s = this.grid[cell.S[0]][cell.S[1]];
 
     [n, e, w, s].forEach((direction) => {
       if (this.grid.validPosition(direction)) {
@@ -42,7 +42,19 @@ class Generator {
   }
 
   hunt(grid) {
+    for(let i = 0; i < grid.dimX; i++) {
+      for(let j = 0; j < grid.dimY; j++) {
+        let cell = grid[i][j];
+        let neighbors = getNeighbors(cell);
+        if (cell.visited === false && neighbors.length >= 1) {
+          this.currentCell = cell;
+          this.currentCell.visit();
+          return -1;
+        }
+      }
+    }
 
+    return null;
   }
 
   kill(grid) {
@@ -51,18 +63,23 @@ class Generator {
       nextCellCoords = this.pickDirection();
     }
     this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
-    let neighbors = this.getNeighbors();
+    this.currentCell.visit();
+    let neighbors = this.getNeighbors(this.currentCell);
     let unvisited = [];
     neighbors.forEach((neighbor) => {
       if(neighbor.visited === false) {
         unvisited.push(neighbor);
       }
     })
-
+    if(unvisited.length === 0) {
+      return null;
+    } else {
+      return -1;
+    }
   }
 
   run() {
-    while() {
+    while(true) {
       let kill = kill(this.grid);
       let hunt;
       if (kill === null) {
