@@ -5,19 +5,27 @@
     <title>JS_Project</title>
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./index.css" type="text/css"/>
+    <script src="js/buttons.js" type="application/javascript"></script>
   </head>
   <body>
     <div class="main-page">
       <div class="maze-area">
         <section></section>
+        <div class="current-maze-settings">
+          <h3>
+            Settings go here
+          </h3>
+        </div>
       </div>
       <div class="algo-toggle">
-
+        <h3>Algorithms</h3>
+        <button onClick="">DFS</button>
+        <button onClick="switchToBFS()">BFS</button>
       </div>
       <div class="info-space">
-        Personal Links go here
+        <h3>Personal Links</h3>
       </div>
     </div>
   </body>
-  <script src="js/practice.js" type="application/javascript"></script>
+  <script id="swag" src="js/practice.js" type="application/javascript"></script>
 </html>

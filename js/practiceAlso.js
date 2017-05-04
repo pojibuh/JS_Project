@@ -6,14 +6,14 @@ var N = 1 << 0,
     W = 1 << 2,
     E = 1 << 3;
 
-var cellSize = 4,
-    cellSpacing = 4,
+var cellSize = 8,
+    cellSpacing = 8,
     cellWidth = Math.floor((width - cellSpacing) / (cellSize + cellSpacing)),
     cellHeight = Math.floor((height - cellSpacing) / (cellSize + cellSpacing)),
     cells = new Array(cellWidth * cellHeight), // each cell’s edge bits
     frontier = [];
 
-var canvas = d3.select("body").append("canvas")
+var canvas = d3.select("section").append("canvas")
     .attr("width", width)
     .attr("height", height);
 

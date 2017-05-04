@@ -36,7 +36,7 @@ frontier.push({index: start, direction: E});
 // Explore the frontier until the tree spans the graph.
 d3.timer(function() {
   var done, k = 0;
-  while (++k < 20 && !(done = exploreFrontier()));
+  while (++k < 50 && !(done = exploreFrontier()));
   return done;
 });
 

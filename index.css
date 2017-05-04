@@ -2,12 +2,18 @@ body {
   background: #000;
 }
 
+h3 {
+  color: #fff;
+}
+
 .main-page {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.info-space {
-  color: #fff;
+.maze-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
