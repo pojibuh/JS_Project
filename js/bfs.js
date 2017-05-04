@@ -1,5 +1,5 @@
 const bfs = function () {
-
+  d3.select("canvas").remove()
   var width = 800,
       height = 500;
 

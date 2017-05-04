@@ -1,4 +1,5 @@
 const dfs = function () {
+  d3.select("canvas").remove()
 
   var width = 800,
       height = 500;
@@ -38,7 +39,7 @@ const dfs = function () {
   // Explore the frontier until the tree spans the graph.
   d3.timer(function() {
     var done, k = 0;
-    while (++k < 20 && !(done = exploreFrontier()));
+    while (++k < 50 && !(done = exploreFrontier()));
     return done;
   });
 
