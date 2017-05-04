@@ -21,13 +21,6 @@ class Grid  {
     return grid;
   }
 
-  render() {
-    const grid = Board.blankGrid(this.dimX, this.dimY);
-
-    const rowStrs = [];
-    grid.map( row => row.join("") ).join("\n");
-  }
-
   validPosition(coord) {
     return (coord[0] >= 0) && (coord[0] < this.dimX) &&
       (coord[1] >= 0) && (coord[1] < this.dimY);

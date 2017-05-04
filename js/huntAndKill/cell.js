@@ -5,10 +5,10 @@ class Cell {
     this.y = y;
     this.visited = false;
     this.children = [];
-    this.N = [this.x + 1, this.y];
-    this.E = [this.x, this.y + 1];
-    this.W = [this.x, this.y - 1];
-    this.S = [this.x - 1, this.y];
+    this.n = [this.x + 1, this.y];
+    this.e = [this.x, this.y + 1];
+    this.w = [this.x, this.y - 1];
+    this.s = [this.x - 1, this.y];
   }
 
   visit() {
@@ -22,6 +22,7 @@ class Cell {
   addChild(node) {
     this.children.push(node)
   }
+
 }
 
 module.exports = Cell;
