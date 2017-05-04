@@ -1,9 +1,9 @@
 const switchToBFS = () => {
-  let el = document.getElementById("swag")
-  return el.src("js/practiceAlso.js")
+  document.getElementById("swag").src="js/practiceAlso.js"
+  document.getElementById("algo").setAttribute( "onclick", "bfs()" );
 }
 
 const switchToDFS = () => {
-  let el = document.getElementById("swag")
-  return el.src("js/practice.js")
+  document.getElementById("swag").src="js/practice.js"
+  document.getElementById("algo").setAttribute( "onclick", "dfs()" );
 }

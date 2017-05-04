@@ -6,6 +6,11 @@ h3 {
   color: #fff;
 }
 
+section {
+  width: 800px;
+  height: 500px;
+}
+
 .main-page {
   display: flex;
   flex-direction: row;
