@@ -13,7 +13,7 @@ const dfs = function () {
       cellSpacing = 8,
       cellWidth = Math.floor((width - cellSpacing) / (cellSize + cellSpacing)),
       cellHeight = Math.floor((height - cellSpacing) / (cellSize + cellSpacing)),
-      cells = new Array(cellWidth * cellHeight), // each cell’s edge bits
+      cells = new Array(cellWidth * cellHeight),
       frontier = [];
 
   var canvas = d3.select("section").append("canvas")
@@ -39,7 +39,7 @@ const dfs = function () {
   // Explore the frontier until the tree spans the graph.
   d3.timer(function() {
     var done, k = 0;
-    while (++k < 50 && !(done = exploreFrontier()));
+    while (++k < 20 && !(done = exploreFrontier()));
     return done;
   });
 
