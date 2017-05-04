@@ -39,7 +39,7 @@ const dfs = function () {
   // Explore the frontier until the tree spans the graph.
   d3.timer(function() {
     var done, k = 0;
-    while (++k < 20 && !(done = exploreFrontier()));
+    while (++k < 5 && !(done = exploreFrontier()));
     return done;
   });
 
