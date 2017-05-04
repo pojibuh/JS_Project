@@ -1,0 +1,13 @@
+body {
+  background: #000;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.info-space {
+  color: #fff;
+}
