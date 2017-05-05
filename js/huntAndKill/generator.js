@@ -53,11 +53,8 @@ class Generator {
       j = 0;
       while(!foundNewCell && j < maze.dimY) {
         let cell = this.grid[i][j];
-        console.log(cell)
         neighbors = this.getNeighbors(cell);
-        console.log(this.hasVisitedNeighbor(neighbors))
         if (cell.visited === false && this.hasVisitedNeighbor(neighbors)) {
-          console.log("found new cell")
           this.currentCell = cell;
           this.currentCell.visit();
           foundNewCell = true;
@@ -70,12 +67,8 @@ class Generator {
     }
 
     if (visited.length === (maze.dimX * maze.dimY)) {
-      console.log("found nothing")
       return null;
     } else {
-      console.log(visited)
-      console.log("found something")
-      console.log(this.currentCell)
       return -1;
     }
   }
@@ -97,15 +90,11 @@ class Generator {
 
   kill(grid) {
     let nextCellCoords = this.pickDirection();
-    console.log([this.currentCell.x, this.currentCell.y])
-    console.log(nextCellCoords)
     while(this.maze.validPosition(nextCellCoords) === false || grid[nextCellCoords[0]][nextCellCoords[1]].visited === true) {
       nextCellCoords = this.pickDirection();
     }
     this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
     this.currentCell.visit();
-    console.log("---------")
-    console.log(this.currentCell);
     let neighbors = this.getNeighbors(this.currentCell);
     let unvisited = [];
     neighbors.forEach((neighbor) => {
@@ -114,7 +103,6 @@ class Generator {
       }
     })
     if(unvisited.length === 0) {
-      console.log('kill phase actually over')
       return null;
     } else {
       return -1;
@@ -142,9 +130,7 @@ class Generator {
       let kill = this.kill(this.grid);
       let hunt;
       if (kill === null) {
-        console.log("hunt begins")
         hunt = this.hunt(this.maze)
-        console.log(hunt)
       }
 
       if (kill === null && hunt === null) {
