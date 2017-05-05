@@ -44,20 +44,55 @@ class Generator {
 
   hunt(maze) {
     let neighbors;
-    for(let i = 0; i < maze.dimX; i++) {
-      for(let j = 0; j < maze.dimY; j++) {
+    let visited = [];
+    let i = 0;
+    let j = 0;
+    let foundNewCell = false;
+
+    while(!foundNewCell && i < maze.dimX) {
+      j = 0;
+      while(!foundNewCell && j < maze.dimY) {
         let cell = this.grid[i][j];
-        console.log(this.getNeighbors(cell))
+        console.log(cell)
         neighbors = this.getNeighbors(cell);
-        if (cell.visited === false && neighbors.length >= 1) {
+        console.log(this.hasVisitedNeighbor(neighbors))
+        if (cell.visited === false && this.hasVisitedNeighbor(neighbors)) {
+          console.log("found new cell")
           this.currentCell = cell;
           this.currentCell.visit();
-          return -1;
+          foundNewCell = true;
+        } else if (cell.visited === true) {
+          visited.push(cell);
         }
+        j++;
       }
+      i++;
     }
 
-    return null;
+    if (visited.length === (maze.dimX * maze.dimY)) {
+      console.log("found nothing")
+      return null;
+    } else {
+      console.log(visited)
+      console.log("found something")
+      console.log(this.currentCell)
+      return -1;
+    }
+  }
+
+  hasVisitedNeighbor(neighbors) {
+    let count = 0;
+    neighbors.forEach((neighbor) => {
+      if (neighbor.visited === true) {
+        count++;
+      }
+    })
+
+    if (count > 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   kill(grid) {
@@ -66,13 +101,12 @@ class Generator {
     console.log(nextCellCoords)
     while(this.maze.validPosition(nextCellCoords) === false || grid[nextCellCoords[0]][nextCellCoords[1]].visited === true) {
       nextCellCoords = this.pickDirection();
-     console.log(nextCellCoords)
     }
     this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
     this.currentCell.visit();
     console.log("---------")
+    console.log(this.currentCell);
     let neighbors = this.getNeighbors(this.currentCell);
-    console.log(neighbors)
     let unvisited = [];
     neighbors.forEach((neighbor) => {
       if(neighbor.visited === false) {
@@ -93,10 +127,11 @@ class Generator {
       let hunt;
       if (kill === null) {
         console.log("hunt begins")
-        let hunt = this.hunt(this.maze)
+        hunt = this.hunt(this.maze)
         console.log(hunt)
       }
-      else if (kill === null && hunt === null) {
+
+      if (kill === null && hunt === null) {
         break;
       }
     }
