@@ -27,8 +27,9 @@ class Generator {
   }
 
   getNeighbors(cell) {
+    console.log("this is cell")
+    console.log(cell)
     let neighbors = [];
-    //it breaks because you can't index into something that doesn't exist (-1 or 5)
     let n = this.grid[cell.n[0]][cell.n[1]];
     let w = this.grid[cell.w[0]][cell.w[1]];
     let e = this.grid[cell.e[0]][cell.e[1]];
@@ -66,11 +67,11 @@ class Generator {
     console.log(nextCellCoords)
     while(this.maze.validPosition(nextCellCoords) === false || grid[nextCellCoords[0]][nextCellCoords[1]].visited === true) {
       nextCellCoords = this.pickDirection();
+     console.log(nextCellCoords)
     }
     this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
     this.currentCell.visit();
     console.log("---------")
-    console.log([this.currentCell.x, this.currentCell.y])
     let neighbors = this.getNeighbors(this.currentCell);
     let unvisited = [];
     neighbors.forEach((neighbor) => {
