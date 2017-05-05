@@ -1,8 +1,9 @@
 class Generator {
 
-  constructor(grid) {
-    this.grid = grid;
-    this.currentCell = grid[this.randomize(grid.dimX)][this.randomize(grid.dimY)];
+  constructor(maze) {
+    this.maze = maze;
+    this.grid = maze.grid;
+    this.currentCell = this.grid[this.randomize(maze.dimX)][this.randomize(maze.dimY)];
     this.currentCell.visit();
     this.run();
   }
@@ -27,13 +28,14 @@ class Generator {
 
   getNeighbors(cell) {
     let neighbors = [];
-    let n = this.grid[cell.N[0]][cell.N[1]];
-    let w = this.grid[cell.W[0]][cell.W[1]];
-    let e = this.grid[cell.E[0]][cell.E[1]];
-    let s = this.grid[cell.S[0]][cell.S[1]];
+    //it breaks because you can't index into something that doesn't exist (-1 or 5)
+    let n = this.grid[cell.n[0]][cell.n[1]];
+    let w = this.grid[cell.w[0]][cell.w[1]];
+    let e = this.grid[cell.e[0]][cell.e[1]];
+    let s = this.grid[cell.s[0]][cell.s[1]];
 
     [n, e, w, s].forEach((direction) => {
-      if (this.grid.validPosition(direction)) {
+      if (this.maze.validPosition(direction)) {
         neighbors.push(direction);
       }
     })
@@ -59,11 +61,16 @@ class Generator {
 
   kill(grid) {
     let nextCellCoords = this.pickDirection();
-    while(!validPosition(nextCellCoords)) {
+    //breaking here, need to make sure to check visited after picking direction
+    console.log([this.currentCell.x, this.currentCell.y])
+    console.log(nextCellCoords)
+    while(this.maze.validPosition(nextCellCoords) === false || grid[nextCellCoords[0]][nextCellCoords[1]].visited === true) {
       nextCellCoords = this.pickDirection();
     }
     this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
     this.currentCell.visit();
+    console.log("---------")
+    console.log([this.currentCell.x, this.currentCell.y])
     let neighbors = this.getNeighbors(this.currentCell);
     let unvisited = [];
     neighbors.forEach((neighbor) => {
@@ -80,10 +87,10 @@ class Generator {
 
   run() {
     while(true) {
-      let kill = kill(this.grid);
+      let kill = this.kill(this.grid);
       let hunt;
       if (kill === null) {
-        let hunt = hunt(this.grid)
+        let hunt = this.hunt(this.grid)
       }
       else if (kill === null && hunt === null) {
         break;

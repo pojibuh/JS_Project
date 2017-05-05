@@ -1,13 +1,14 @@
 const cell = require("./cell");
 
-class Grid  {
+class Maze  {
 
   constructor(dimX, dimY) {
     this.dimX = dimX;
     this.dimY = dimY;
+    this.grid = this.blankGrid(dimX, dimY)
   }
 
-  static blankGrid(dimX, dimY) {
+  blankGrid(dimX, dimY) {
     const grid = [];
 
     for (let i = 0; i < dimX; i++) {
