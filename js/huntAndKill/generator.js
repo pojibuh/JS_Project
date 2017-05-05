@@ -9,17 +9,13 @@ class Generator {
   }
 
   pickDirection() {
-    let guess = this.randomize(4);
-    switch(guess) {
-      case 0:
-        return this.currentCell.n;
-      case 1:
-        return this.currentCell.e;
-      case 2:
-        return this.currentCell.w;
-      case 3:
-        return this.currentCell.s;
-    }
+    let directions = [
+      this.currentCell.n,
+      this.currentCell.e,
+      this.currentCell.w,
+      this.currentCell.s
+    ]
+    return directions[this.randomize(4)]
   }
 
   randomize(num) {
@@ -51,6 +47,8 @@ class Generator {
 
     while(!foundNewCell && i < maze.dimX) {
       j = 0;
+      console.log(`I is ${i}`);
+      console.log(`J is ${j}`);
       while(!foundNewCell && j < maze.dimY) {
         let cell = this.grid[i][j];
         neighbors = this.getNeighbors(cell);
@@ -58,18 +56,22 @@ class Generator {
           this.currentCell = cell;
           this.currentCell.visit();
           foundNewCell = true;
-        } else if (cell.visited === true) {
+          visited.push(cell);
+        } else {
           visited.push(cell);
         }
-        j++;
+        j += 1;
       }
-      i++;
+      i += 1;
+      //debugger
     }
 
+    //debugger
     if (visited.length === (maze.dimX * maze.dimY)) {
       return null;
     } else {
-      return -1;
+      console.log(visited.length)
+      return visited.length;
     }
   }
 
@@ -90,7 +92,9 @@ class Generator {
 
   kill(grid) {
     let nextCellCoords = this.pickDirection();
+    //prevent things from ending up here infinitely
     while(this.maze.validPosition(nextCellCoords) === false || grid[nextCellCoords[0]][nextCellCoords[1]].visited === true) {
+      debugger
       nextCellCoords = this.pickDirection();
     }
     this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
@@ -107,7 +111,7 @@ class Generator {
     } else {
       return -1;
     }
-
+  }
 
   render() {
     let currentGrid = [];
@@ -122,21 +126,31 @@ class Generator {
       })
       currentGrid.push(newRow);
     })
-    return currentGrid;
+    console.log(currentGrid[0]);
+    console.log(currentGrid[1]);
+    console.log(currentGrid[2]);
+    console.log(currentGrid[3]);
+    console.log(currentGrid[4]);
+    console.log("-------------");
   }
 
   run() {
-    while(true) {
+    let loop = true;
+    while(loop === true) {
+      this.render();
       let kill = this.kill(this.grid);
       let hunt;
+      this.render();
       if (kill === null) {
-        hunt = this.hunt(this.maze)
+        //debugger
+        hunt = this.hunt(this.maze);
+        this.render();
       }
 
       if (kill === null && hunt === null) {
-        break;
+        //debugger
+        loop = false;
       }
-      this.render();
     }
   }
 }
