@@ -27,28 +27,28 @@ class Generator {
   }
 
   getNeighbors(cell) {
-    console.log("this is cell")
-    console.log(cell)
     let neighbors = [];
-    let n = this.grid[cell.n[0]][cell.n[1]];
-    let w = this.grid[cell.w[0]][cell.w[1]];
-    let e = this.grid[cell.e[0]][cell.e[1]];
-    let s = this.grid[cell.s[0]][cell.s[1]];
+    let n = [[cell.n[0]],[cell.n[1]]];
+    let w = [[cell.w[0]],[cell.w[1]]];
+    let e = [[cell.e[0]],[cell.e[1]]];
+    let s = [[cell.s[0]],[cell.s[1]]];
 
     [n, e, w, s].forEach((direction) => {
       if (this.maze.validPosition(direction)) {
-        neighbors.push(direction);
+        neighbors.push(this.grid[direction[0]][direction[1]]);
       }
     })
 
     return neighbors;
   }
 
-  hunt(grid) {
-    for(let i = 0; i < grid.dimX; i++) {
-      for(let j = 0; j < grid.dimY; j++) {
-        let cell = grid[i][j];
-        let neighbors = getNeighbors(cell);
+  hunt(maze) {
+    let neighbors;
+    for(let i = 0; i < maze.dimX; i++) {
+      for(let j = 0; j < maze.dimY; j++) {
+        let cell = this.grid[i][j];
+        console.log(this.getNeighbors(cell))
+        neighbors = this.getNeighbors(cell);
         if (cell.visited === false && neighbors.length >= 1) {
           this.currentCell = cell;
           this.currentCell.visit();
@@ -62,7 +62,6 @@ class Generator {
 
   kill(grid) {
     let nextCellCoords = this.pickDirection();
-    //breaking here, need to make sure to check visited after picking direction
     console.log([this.currentCell.x, this.currentCell.y])
     console.log(nextCellCoords)
     while(this.maze.validPosition(nextCellCoords) === false || grid[nextCellCoords[0]][nextCellCoords[1]].visited === true) {
@@ -73,6 +72,7 @@ class Generator {
     this.currentCell.visit();
     console.log("---------")
     let neighbors = this.getNeighbors(this.currentCell);
+    console.log(neighbors)
     let unvisited = [];
     neighbors.forEach((neighbor) => {
       if(neighbor.visited === false) {
@@ -80,6 +80,7 @@ class Generator {
       }
     })
     if(unvisited.length === 0) {
+      console.log('kill phase actually over')
       return null;
     } else {
       return -1;
@@ -91,7 +92,9 @@ class Generator {
       let kill = this.kill(this.grid);
       let hunt;
       if (kill === null) {
-        let hunt = this.hunt(this.grid)
+        console.log("hunt begins")
+        let hunt = this.hunt(this.maze)
+        console.log(hunt)
       }
       else if (kill === null && hunt === null) {
         break;
