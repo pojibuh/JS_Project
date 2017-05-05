@@ -119,6 +119,22 @@ class Generator {
     } else {
       return -1;
     }
+
+
+  render() {
+    let currentGrid = [];
+    this.grid.forEach((row) => {
+      let newRow = [];
+      row.forEach((cell) => {
+        if (cell.visited === true) {
+          newRow.push("X");
+        } else {
+          newRow.push(" ");
+        }
+      })
+      currentGrid.push(newRow);
+    })
+    return currentGrid;
   }
 
   run() {
@@ -134,6 +150,7 @@ class Generator {
       if (kill === null && hunt === null) {
         break;
       }
+      this.render();
     }
   }
 }
