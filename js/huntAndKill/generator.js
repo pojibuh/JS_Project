@@ -8,18 +8,22 @@ class Generator {
     this.run();
   }
 
-  pickDirection() {
-    let directions = [
-      this.currentCell.n,
-      this.currentCell.e,
-      this.currentCell.w,
-      this.currentCell.s
-    ]
-    return directions[this.randomize(4)]
-  }
-
   randomize(num) {
     return Math.floor(Math.random() * num)
+  }
+
+  pickDirection() {
+    let currCellNeighbors = this.getNeighbors(this.currentCell);
+    let unvisitedNeighbors = currCellNeighbors.filter((neighbor) => {
+      return neighbor.visited === false;
+    });
+
+    if (unvisitedNeighbors.length >= 1) {
+      let chosenNeighbor = unvisitedNeighbors[this.randomize(unvisitedNeighbors.length)];
+      return [chosenNeighbor.x, chosenNeighbor.y];
+    } else {
+      return null;
+    }
   }
 
   getNeighbors(cell) {
@@ -47,8 +51,6 @@ class Generator {
 
     while(!foundNewCell && i < maze.dimX) {
       j = 0;
-      console.log(`I is ${i}`);
-      console.log(`J is ${j}`);
       while(!foundNewCell && j < maze.dimY) {
         let cell = this.grid[i][j];
         neighbors = this.getNeighbors(cell);
@@ -63,14 +65,11 @@ class Generator {
         j += 1;
       }
       i += 1;
-      //debugger
     }
 
-    //debugger
     if (visited.length === (maze.dimX * maze.dimY)) {
       return null;
     } else {
-      console.log(visited.length)
       return visited.length;
     }
   }
@@ -92,24 +91,24 @@ class Generator {
 
   kill(grid) {
     let nextCellCoords = this.pickDirection();
-    //prevent things from ending up here infinitely
-    while(this.maze.validPosition(nextCellCoords) === false || grid[nextCellCoords[0]][nextCellCoords[1]].visited === true) {
-      debugger
-      nextCellCoords = this.pickDirection();
-    }
-    this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
-    this.currentCell.visit();
-    let neighbors = this.getNeighbors(this.currentCell);
-    let unvisited = [];
-    neighbors.forEach((neighbor) => {
-      if(neighbor.visited === false) {
-        unvisited.push(neighbor);
-      }
-    })
-    if(unvisited.length === 0) {
+
+    if (nextCellCoords === null) {
       return null;
     } else {
-      return -1;
+      this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
+      this.currentCell.visit();
+      let neighbors = this.getNeighbors(this.currentCell);
+      let unvisited = [];
+      neighbors.forEach((neighbor) => {
+        if(neighbor.visited === false) {
+          unvisited.push(neighbor);
+        }
+      })
+      if(unvisited.length === 0) {
+        return null;
+      } else {
+        return -1;
+      }
     }
   }
 
@@ -140,15 +139,12 @@ class Generator {
       this.render();
       let kill = this.kill(this.grid);
       let hunt;
-      this.render();
       if (kill === null) {
-        //debugger
         hunt = this.hunt(this.maze);
         this.render();
       }
 
       if (kill === null && hunt === null) {
-        //debugger
         loop = false;
       }
     }
