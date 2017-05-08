@@ -72,12 +72,13 @@ class primGenerator {
   }
 
   run() {
-      while(this.frontier.length > 0) {
-        this.render();
-        this.shuffleFrontier();
-        this.currentCell = this.frontier.pop();
-        this.currentCell.visit();
-        this.addToFrontier();
-      }
+    while(this.frontier.length > 0) {
+      this.render();
+      this.shuffleFrontier();
+      this.currentCell = this.frontier.pop();
+      this.currentCell.visit();
+      this.addToFrontier();
+    }
+    this.render();
   }
 }

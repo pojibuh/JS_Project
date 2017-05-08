@@ -13,10 +13,15 @@ class Maze  {
 
     for (let i = 0; i < dimX; i++) {
       const row = [];
+      let swag = document.getElementById("swag");
+      let rowUl = document.createElement("ul");
       for (let j = 0; j < dimY; j++) {
         row.push(new Cell(i, j));
+        let rowLi = document.createElement("li");
+        rowUl.appendChild(rowLi);
       }
       grid.push(row);
+      swag.appendChild(rowUl);
     }
 
     return grid;
