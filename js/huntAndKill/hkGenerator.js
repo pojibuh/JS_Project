@@ -1,4 +1,4 @@
-class Generator {
+class hkGenerator {
 
   constructor(maze) {
     this.maze = maze;
