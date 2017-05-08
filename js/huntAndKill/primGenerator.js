@@ -10,7 +10,7 @@ class primGenerator {
   }
 
   shuffleFrontier() {
-    
+
   }
 
   getNeighbors(cell) {
@@ -29,13 +29,17 @@ class primGenerator {
     return neighbors;
   }
 
-  pickFromFrontier() {
-    //shuffle frontier array and pop
+  addToFrontier() {
+
   }
 
   run() {
+    let nextCell;
     while(frontier.length > 0) {
-
+      shuffleFrontier();
+      nextCell = this.frontier.pop();
+      nextCell.visit();
+      addToFrontier();
     }
   }
 }
