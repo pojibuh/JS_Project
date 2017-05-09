@@ -89,7 +89,7 @@ class primGenerator {
       this.addToFrontier();
       setTimeout(() => {
         this.run();
-      }, 40)
+      }, 5)
   }
 }
 

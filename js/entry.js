@@ -2,22 +2,6 @@ import Maze from "./algos/maze";
 import hkGenerator from "./algos/hkGenerator";
 import primGenerator from "./algos/primGenerator";
 
-const prim = require("./algos/primGenerator");
-const hk = require("./algos/hkGenerator");
-
-const switchToPrim = () => {
-
-  document.getElementById("algo").addEventListener( 'click', () => prim() );
-}
-
-const switchToHK = () => {
-
-  document.getElementById("algo").addEventListener( 'click', () => hk() );
-}
-
-document.getElementById("prim").addEventListener( 'click', () => switchToPrim() );
-document.getElementById("hk").addEventListener( 'click', () => switchToHK() );
-
 function prim() {
   let el = document.getElementById("swag");
   el.parentNode.removeChild(el);
@@ -39,3 +23,16 @@ function hk() {
   let n = new Maze (20, 32);
   let swag = new hkGenerator(n);
 }
+
+const switchToPrim = () => {
+
+  document.getElementById("algo").addEventListener( 'click', () => prim() );
+}
+
+const switchToHK = () => {
+
+  document.getElementById("algo").addEventListener( 'click', () => hk() );
+}
+
+document.getElementById("prim").addEventListener( 'click', () => switchToPrim() );
+document.getElementById("hk").addEventListener( 'click', () => switchToHK() );
