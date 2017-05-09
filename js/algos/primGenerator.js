@@ -8,7 +8,6 @@ class primGenerator {
     this.currentCell = this.grid[this.randomize(maze.dimX)][this.randomize(maze.dimY)];
     this.currentCell.visit();
     this.frontier = this.getNeighbors(this.currentCell);
-    this.run();
   }
 
   randomize(num) {

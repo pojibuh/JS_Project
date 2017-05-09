@@ -11,6 +11,7 @@ function prim() {
   hook.appendChild(swagga)
   let n = new Maze (20, 32);
   let swag = new primGenerator(n);
+  swag.run();
 }
 
 function hk() {
@@ -22,15 +23,14 @@ function hk() {
   hook.appendChild(swagga)
   let n = new Maze (20, 32);
   let swag = new hkGenerator(n);
+  swag.run();
 }
 
 const switchToPrim = () => {
-
   document.getElementById("algo").addEventListener( 'click', () => prim() );
 }
 
 const switchToHK = () => {
-
   document.getElementById("algo").addEventListener( 'click', () => hk() );
 }
 

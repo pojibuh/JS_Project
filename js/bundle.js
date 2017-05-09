@@ -95,7 +95,6 @@ var hkGenerator = function () {
     this.grid = maze.grid;
     this.currentCell = this.grid[this.randomize(maze.dimX)][this.randomize(maze.dimY)];
     this.currentCell.visit();
-    this.run();
   }
 
   _createClass(hkGenerator, [{
@@ -295,7 +294,6 @@ var primGenerator = function () {
     this.currentCell = this.grid[this.randomize(maze.dimX)][this.randomize(maze.dimY)];
     this.currentCell.visit();
     this.frontier = this.getNeighbors(this.currentCell);
-    this.run();
   }
 
   _createClass(primGenerator, [{
@@ -431,6 +429,7 @@ function prim() {
   hook.appendChild(swagga);
   var n = new _maze2.default(20, 32);
   var swag = new _primGenerator2.default(n);
+  swag.run();
 }
 
 function hk() {
@@ -442,17 +441,16 @@ function hk() {
   hook.appendChild(swagga);
   var n = new _maze2.default(20, 32);
   var swag = new _hkGenerator2.default(n);
+  swag.run();
 }
 
 var switchToPrim = function switchToPrim() {
-
   document.getElementById("algo").addEventListener('click', function () {
     return prim();
   });
 };
 
 var switchToHK = function switchToHK() {
-
   document.getElementById("algo").addEventListener('click', function () {
     return hk();
   });

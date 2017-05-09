@@ -3,6 +3,10 @@ body, ul, li {
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   background: dodgerblue;
 }

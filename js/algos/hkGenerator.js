@@ -7,7 +7,6 @@ class hkGenerator {
     this.grid = maze.grid;
     this.currentCell = this.grid[this.randomize(maze.dimX)][this.randomize(maze.dimY)];
     this.currentCell.visit();
-    this.run();
   }
 
   randomize(num) {
