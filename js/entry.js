@@ -1,15 +1,41 @@
-const dfs = require("./dfs");
-const bfs = require("./bfs");
+import Maze from "./algos/maze";
+import hkGenerator from "./algos/hkGenerator";
+import primGenerator from "./algos/primGenerator";
 
-const switchToBFS = () => {
+const prim = require("./algos/primGenerator");
+const hk = require("./algos/hkGenerator");
 
-  document.getElementById("algo").addEventListener( 'click', () => bfs() );
+const switchToPrim = () => {
+
+  document.getElementById("algo").addEventListener( 'click', () => prim() );
 }
 
-const switchToDFS = () => {
+const switchToHK = () => {
 
-  document.getElementById("algo").addEventListener( 'click', () => dfs() );
+  document.getElementById("algo").addEventListener( 'click', () => hk() );
 }
 
-document.getElementById("dfs").addEventListener( 'click', () => switchToDFS() );
-document.getElementById("bfs").addEventListener( 'click', () => switchToBFS() );
+document.getElementById("prim").addEventListener( 'click', () => switchToPrim() );
+document.getElementById("hk").addEventListener( 'click', () => switchToHK() );
+
+function prim() {
+  let el = document.getElementById("swag");
+  el.parentNode.removeChild(el);
+  let swagga = document.createElement("div");
+  swagga.id = "swag";
+  let hook = document.getElementById("hook");
+  hook.appendChild(swagga)
+  let n = new Maze (20, 32);
+  let swag = new primGenerator(n);
+}
+
+function hk() {
+  let el = document.getElementById("swag");
+  el.parentNode.removeChild(el);
+  let swagga = document.createElement("div");
+  swagga.id = "swag";
+  let hook = document.getElementById("hook");
+  hook.appendChild(swagga)
+  let n = new Maze (20, 32);
+  let swag = new hkGenerator(n);
+}

@@ -26,4 +26,4 @@ class Cell {
 
 }
 
-module.exports = Cell;
+export default Cell;

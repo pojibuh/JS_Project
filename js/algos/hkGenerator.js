@@ -1,3 +1,5 @@
+import Maze from './maze'
+
 class hkGenerator {
 
   constructor(maze) {
@@ -153,3 +155,5 @@ class hkGenerator {
     }, 5)
   }
 }
+
+export default hkGenerator;

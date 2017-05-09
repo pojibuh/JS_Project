@@ -1,4 +1,4 @@
-const cell = require("./cell");
+import Cell from './cell'
 
 class Maze  {
 
@@ -36,4 +36,4 @@ class Maze  {
   }
 }
 
-module.exports = Maze;
+export default Maze;
