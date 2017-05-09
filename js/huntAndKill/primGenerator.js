@@ -90,3 +90,9 @@ class primGenerator {
       }, 40)
   }
 }
+
+let el = document.getElementById("swag");
+el.parentNode.removeChild(el);
+//then create new "swag" div for maze to hook into
+let n = new Maze (20, 32);
+let swag = new hkGenerator(n);

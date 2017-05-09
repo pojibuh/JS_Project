@@ -43,7 +43,6 @@ class hkGenerator {
   }
 
   connectNeighbor(cell, neighbors) {
-    //pick neighbor to connect with after hunting cell down
     let chosenNeighbor;
     let visitedNeighbors = neighbors.filter((neighbor) => {
       return neighbor.visited === true;
@@ -53,7 +52,7 @@ class hkGenerator {
     } else if (visitedNeighbors.length > 1) {
       chosenNeighbor = visitedNeighbors[this.randomize(visitedNeighbors.length)]
     }
-    // debugger
+
     this.removeBorder(cell, chosenNeighbor);
   }
 

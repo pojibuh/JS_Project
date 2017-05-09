@@ -1,5 +1,5 @@
 const dfs = function () {
-  d3.select("canvas").remove()
+  d3.select("#swag").remove()
 
   var width = 800,
       height = 500;
