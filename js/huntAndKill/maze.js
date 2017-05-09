@@ -36,4 +36,4 @@ class Maze  {
   }
 }
 
-module.exports = Grid;
+module.exports = Maze;

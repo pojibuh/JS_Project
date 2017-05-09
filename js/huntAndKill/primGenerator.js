@@ -85,7 +85,6 @@ class primGenerator {
       this.currentCell.visit();
       this.connectNeighbor(this.currentCell)
       this.addToFrontier();
-      this.render();
       setTimeout(() => {
         this.run();
       }, 40)
