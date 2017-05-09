@@ -42,6 +42,21 @@ class hkGenerator {
     return neighbors;
   }
 
+  connectNeighbor(cell, neighbors) {
+    //pick neighbor to connect with after hunting cell down
+    let chosenNeighbor;
+    let visitedNeighbors = neighbors.filter((neighbor) => {
+      return neighbor.visited === true;
+    });
+    if (visitedNeighbors.length === 1) {
+      chosenNeighbor = visitedNeighbors[0];
+    } else if (visitedNeighbors.length > 1) {
+      chosenNeighbor = visitedNeighbors[this.randomize(visitedNeighbors.length)]
+    }
+    // debugger
+    this.removeBorder(cell, chosenNeighbor);
+  }
+
   hunt(maze) {
     let neighbors;
     let visited = [];
@@ -57,6 +72,7 @@ class hkGenerator {
         if (cell.visited === false && this.hasVisitedNeighbor(neighbors)) {
           this.currentCell = cell;
           this.currentCell.visit();
+          this.connectNeighbor(cell, neighbors)
           foundNewCell = true;
           visited.push(cell);
         } else {
@@ -89,14 +105,28 @@ class hkGenerator {
     }
   }
 
+  removeBorder(oldCell, newCell) {
+    if (oldCell.n[0] === newCell.x && oldCell.n[1] === newCell.y) {
+      newCell.addClass("remove-bottom");
+    } else if (oldCell.e[0] === newCell.x && oldCell.e[1] === newCell.y) {
+      oldCell.addClass("remove-right");
+    } else if (oldCell.w[0] === newCell.x && oldCell.w[1] === newCell.y) {
+      newCell.addClass("remove-right");
+    } else if (oldCell.s[0] === newCell.x && oldCell.s[1] === newCell.y) {
+      oldCell.addClass("remove-bottom");
+    }
+  }
+
   kill(grid) {
     let nextCellCoords = this.pickDirection();
 
     if (nextCellCoords === null) {
       return null;
     } else {
+      let formerCell = this.currentCell;
       this.currentCell = grid[nextCellCoords[0]][nextCellCoords[1]];
       this.currentCell.visit();
+      this.removeBorder(formerCell, this.currentCell);
       let neighbors = this.getNeighbors(this.currentCell);
       let unvisited = [];
       neighbors.forEach((neighbor) => {
@@ -112,41 +142,15 @@ class hkGenerator {
     }
   }
 
-  render() {
-    let currentGrid = [];
-    this.grid.forEach((row) => {
-      let newRow = [];
-      row.forEach((cell) => {
-        if (cell.visited === true) {
-          newRow.push("X");
-        } else {
-          newRow.push(" ");
-        }
-      })
-      currentGrid.push(newRow);
-    })
-    console.log(currentGrid[0]);
-    console.log(currentGrid[1]);
-    console.log(currentGrid[2]);
-    console.log(currentGrid[3]);
-    console.log(currentGrid[4]);
-    console.log("-------------");
-  }
-
   run() {
-    let loop = true;
-    while(loop === true) {
-      this.render();
-      let kill = this.kill(this.grid);
-      let hunt;
-      if (kill === null) {
-        hunt = this.hunt(this.maze);
-        this.render();
-      }
-
-      if (kill === null && hunt === null) {
-        loop = false;
-      }
+    let kill = this.kill(this.grid);
+    let hunt;
+    if (kill === null) {
+      hunt = this.hunt(this.maze);
     }
+    if (kill === null && hunt === null) { return; }
+    setTimeout(() => {
+      this.run();
+    }, 5)
   }
 }

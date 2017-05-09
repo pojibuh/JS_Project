@@ -10,14 +10,17 @@ class Maze  {
 
   blankGrid(dimX, dimY) {
     const grid = [];
+    let swag = document.getElementById("swag");
+    let rowUl;
+    let rowLi;
 
     for (let i = 0; i < dimX; i++) {
       const row = [];
-      let swag = document.getElementById("swag");
-      let rowUl = document.createElement("ul");
+      rowUl = document.createElement("ul");
       for (let j = 0; j < dimY; j++) {
-        row.push(new Cell(i, j));
-        let rowLi = document.createElement("li");
+        rowLi = document.createElement("li");
+        rowLi.className = "unvisited"
+        row.push(new Cell(i, j, rowLi));
         rowUl.appendChild(rowLi);
       }
       grid.push(row);
