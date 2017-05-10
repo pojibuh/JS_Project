@@ -1,3 +1,3 @@
 # mazeCraft
 
-Link to live site: [Live](moktarjama.mazeCraft)
+Link to live site: [Live](moktarjama.com/mazeCraft)
