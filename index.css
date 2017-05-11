@@ -114,52 +114,42 @@ ul.icons li {
 	position: relative;
   font-family: FontAwesome;
   font-style: normal;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .icon.circle {
 	transition: all 0.2s ease-in-out;
 	border-radius: 100%;
 	display: inline-block;
-	height: 2.25em;
+	height: 2em;
 	left: 0;
-	line-height: 2.25em;
+	line-height: 2em;
 	text-align: center;
 	text-decoration: none;
 	top: 0;
-	width: 2.25em;
+	width: 2em;
 }
 
 .icon.circle:hover {
 	top: -0.2em;
+  background-color: rgba(255, 255, 255, 0.075);
 }
 
 .fa-github {
 	background: transparent;
 	color: #fff;
-  border: 1px solid #fff;
-}
-
-.fa-github:hover {
-	background: #e1b89b;
-	background: #F1C5A9;
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .fa-linkedin-square {
 	background: transparent;
 	color: #fff;
-  border: 1px solid #fff;
-}
-
-.fa-linkedin-square:hover {
-  background: #0087CF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .fa-angellist {
 	background: transparent;
 	color: #fff;
-  border: 1px solid #fff;
-}
-
-.fa-angellist:hover {
-  background: #0087CF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
