@@ -78,9 +78,88 @@ section {
   justify-content: flex-start;
 }
 
+.info-space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .algo-title {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.icons {
+  cursor: default;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.icons a {
+  cursor: pointer;
+}
+
+ul.icons li {
+	display: inline-block;
+	line-height: 1em;
+	padding-left: 0.25em;
+  cursor: pointer;
+}
+
+.icon {
+	text-decoration: none;
+	position: relative;
+  font-family: FontAwesome;
+  font-style: normal;
+}
+
+.icon.circle {
+	transition: all 0.2s ease-in-out;
+	border-radius: 100%;
+	display: inline-block;
+	height: 2.25em;
+	left: 0;
+	line-height: 2.25em;
+	text-align: center;
+	text-decoration: none;
+	top: 0;
+	width: 2.25em;
+}
+
+.icon.circle:hover {
+	top: -0.2em;
+}
+
+.fa-github {
+	background: transparent;
+	color: #fff;
+  border: 1px solid #fff;
+}
+
+.fa-github:hover {
+	background: #e1b89b;
+	background: #F1C5A9;
+}
+
+.fa-linkedin-square {
+	background: transparent;
+	color: #fff;
+  border: 1px solid #fff;
+}
+
+.fa-linkedin-square:hover {
+  background: #0087CF;
+}
+
+.fa-angellist {
+	background: transparent;
+	color: #fff;
+  border: 1px solid #fff;
+}
+
+.fa-angellist:hover {
+  background: #0087CF;
 }
