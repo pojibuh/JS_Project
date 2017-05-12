@@ -72,6 +72,10 @@ section {
   justify-content: space-around;
 }
 
+.main-title {
+  font-family: 'Press Start 2P', cursive;
+}
+
 .maze-area {
   display: flex;
   flex-direction: column;
@@ -89,6 +93,20 @@ section {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.algo-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.interactive-things {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .icons {
