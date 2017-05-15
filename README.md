@@ -1,6 +1,6 @@
 # mazeCraft
 
-Link to live site: [Live](http://moktarjama.com/mazeCraft
+Link to live site: [Live](http://moktarjama.com/mazeCraft)
 
 mazeCraft is an application that showcases different maze algorithms in a user friendly and intuitive way.
 
