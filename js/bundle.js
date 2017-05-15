@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -79,7 +79,72 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _maze = __webpack_require__(4);
+var _cell = __webpack_require__(3);
+
+var _cell2 = _interopRequireDefault(_cell);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Maze = function () {
+  function Maze(dimX, dimY) {
+    _classCallCheck(this, Maze);
+
+    this.dimX = dimX;
+    this.dimY = dimY;
+    this.grid = this.blankGrid(dimX, dimY);
+  }
+
+  _createClass(Maze, [{
+    key: "blankGrid",
+    value: function blankGrid(dimX, dimY) {
+      var grid = [];
+      var swag = document.getElementById("swag");
+      var rowUl = void 0;
+      var rowLi = void 0;
+
+      for (var i = 0; i < dimX; i++) {
+        var row = [];
+        rowUl = document.createElement("ul");
+        for (var j = 0; j < dimY; j++) {
+          rowLi = document.createElement("li");
+          rowLi.className = "unvisited";
+          row.push(new _cell2.default(i, j, rowLi));
+          rowUl.appendChild(rowLi);
+        }
+        grid.push(row);
+        swag.appendChild(rowUl);
+      }
+
+      return grid;
+    }
+  }, {
+    key: "validPosition",
+    value: function validPosition(coord) {
+      return coord[0] >= 0 && coord[0] < this.dimX && coord[1] >= 0 && coord[1] < this.dimY;
+    }
+  }]);
+
+  return Maze;
+}();
+
+exports.default = Maze;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _maze = __webpack_require__(0);
 
 var _maze2 = _interopRequireDefault(_maze);
 
@@ -265,7 +330,7 @@ var hkGenerator = function () {
 exports.default = hkGenerator;
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -277,7 +342,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _maze = __webpack_require__(4);
+var _maze = __webpack_require__(0);
 
 var _maze2 = _interopRequireDefault(_maze);
 
@@ -400,70 +465,6 @@ var primGenerator = function () {
 exports.default = primGenerator;
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _maze = __webpack_require__(4);
-
-var _maze2 = _interopRequireDefault(_maze);
-
-var _hkGenerator = __webpack_require__(0);
-
-var _hkGenerator2 = _interopRequireDefault(_hkGenerator);
-
-var _primGenerator = __webpack_require__(1);
-
-var _primGenerator2 = _interopRequireDefault(_primGenerator);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function prim() {
-  var el = document.getElementById("swag");
-  el.parentNode.removeChild(el);
-  var swagga = document.createElement("div");
-  swagga.id = "swag";
-  var hook = document.getElementById("hook");
-  hook.appendChild(swagga);
-  var n = new _maze2.default(20, 32);
-  var swag = new _primGenerator2.default(n);
-  swag.run();
-}
-
-function hk() {
-  var el = document.getElementById("swag");
-  el.parentNode.removeChild(el);
-  var swagga = document.createElement("div");
-  swagga.id = "swag";
-  var hook = document.getElementById("hook");
-  hook.appendChild(swagga);
-  var n = new _maze2.default(20, 32);
-  var swag = new _hkGenerator2.default(n);
-  swag.run();
-}
-
-var switchToPrim = function switchToPrim() {
-  document.getElementById("algo").addEventListener('click', function () {
-    return prim();
-  });
-};
-
-var switchToHK = function switchToHK() {
-  document.getElementById("algo").addEventListener('click', function () {
-    return hk();
-  });
-};
-
-document.getElementById("prim").addEventListener('click', function () {
-  return switchToPrim();
-});
-document.getElementById("hk").addEventListener('click', function () {
-  return switchToHK();
-});
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -522,63 +523,68 @@ exports.default = Cell;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _maze = __webpack_require__(0);
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _maze2 = _interopRequireDefault(_maze);
 
-var _cell = __webpack_require__(3);
+var _hkGenerator = __webpack_require__(1);
 
-var _cell2 = _interopRequireDefault(_cell);
+var _hkGenerator2 = _interopRequireDefault(_hkGenerator);
+
+var _primGenerator = __webpack_require__(2);
+
+var _primGenerator2 = _interopRequireDefault(_primGenerator);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function setupGenerator(generator) {
+  var el = document.getElementById("swag");
+  el.parentNode.removeChild(el);
+  var swagga = document.createElement("div");
+  swagga.id = "swag";
+  var hook = document.getElementById("hook");
+  hook.appendChild(swagga);
+  var n = new _maze2.default(20, 32);
+  var swag = void 0;
 
-var Maze = function () {
-  function Maze(dimX, dimY) {
-    _classCallCheck(this, Maze);
-
-    this.dimX = dimX;
-    this.dimY = dimY;
-    this.grid = this.blankGrid(dimX, dimY);
+  if (generator === 'prim') {
+    swag = new _primGenerator2.default(n);
+  } else if (generator === 'hk') {
+    swag = new _hkGenerator2.default(n);
   }
+  swag.run();
+}
 
-  _createClass(Maze, [{
-    key: "blankGrid",
-    value: function blankGrid(dimX, dimY) {
-      var grid = [];
-      var swag = document.getElementById("swag");
-      var rowUl = void 0;
-      var rowLi = void 0;
+function switchToPrimInfo() {
+  var title = document.getElementById("title");
+  title.innerText = "Prim's Algorithm";
+}
 
-      for (var i = 0; i < dimX; i++) {
-        var row = [];
-        rowUl = document.createElement("ul");
-        for (var j = 0; j < dimY; j++) {
-          rowLi = document.createElement("li");
-          rowLi.className = "unvisited";
-          row.push(new _cell2.default(i, j, rowLi));
-          rowUl.appendChild(rowLi);
-        }
-        grid.push(row);
-        swag.appendChild(rowUl);
-      }
+function switchToHKInfo() {
+  var title = document.getElementById("title");
+  title.innerText = "Hunt-and-Kill Algorithm";
+}
 
-      return grid;
-    }
-  }, {
-    key: "validPosition",
-    value: function validPosition(coord) {
-      return coord[0] >= 0 && coord[0] < this.dimX && coord[1] >= 0 && coord[1] < this.dimY;
-    }
-  }]);
+var switchToPrim = function switchToPrim() {
+  document.getElementById("algo").addEventListener('click', function () {
+    return setupGenerator('prim');
+  });
+  switchToPrimInfo();
+};
 
-  return Maze;
-}();
+var switchToHK = function switchToHK() {
+  document.getElementById("algo").addEventListener('click', function () {
+    return setupGenerator('hk');
+  });
+  switchToHKInfo();
+};
 
-exports.default = Maze;
+document.getElementById("prim").addEventListener('click', function () {
+  return switchToPrim();
+});
+document.getElementById("hk").addEventListener('click', function () {
+  return switchToHK();
+});
 
 /***/ })
 /******/ ]);

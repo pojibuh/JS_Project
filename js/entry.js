@@ -10,12 +10,12 @@ function setupGenerator(generator) {
   let hook = document.getElementById("hook");
   hook.appendChild(swagga)
   let n = new Maze (20, 32);
+  let swag;
 
   if (generator === 'prim') {
-    let swag = new primGenerator(n);
+    swag = new primGenerator(n);
   } else if (generator === 'hk') {
-    switchToHKInfo()
-    let swag = new hkGenerator(n);
+    swag = new hkGenerator(n);
   }
   swag.run();
 }
@@ -28,18 +28,17 @@ function switchToPrimInfo() {
 
 function switchToHKInfo() {
   let title = document.getElementById("title");
-  debugger
   title.innerText = "Hunt-and-Kill Algorithm"
 }
 
 const switchToPrim = () => {
-  switchToPrimInfo();
   document.getElementById("algo").addEventListener( 'click', () => setupGenerator('prim') );
+  switchToPrimInfo();
 }
 
 const switchToHK = () => {
-  switchToHKInfo();
   document.getElementById("algo").addEventListener( 'click', () => setupGenerator('hk') );
+  switchToHKInfo();
 }
 
 document.getElementById("prim").addEventListener( 'click', () => switchToPrim() );
