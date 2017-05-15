@@ -9,6 +9,7 @@ button {
 
 body {
   background: dodgerblue;
+  font-family: 'Roboto', sans-serif;
 }
 
 h3 {
@@ -104,6 +105,7 @@ section {
   font-family: 'Press Start 2P', cursive;
   color: #000;
   font-size: 30px;
+  text-align: center;
 }
 
 .algo-toggle {
@@ -111,6 +113,14 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+
+.instructions {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .interactive-things {
