@@ -26,7 +26,7 @@ function switchToPrimInfo() {
   title.innerText = "Prim's Algorithm";
   let desc = document.getElementById("description");
   desc.innerText = "Prim's algorithm involves choosing an initial vertex"
-  + " ,then adding all of its neighbors into the 'frontier.'"
+  + ", then adding all of its neighbors into the 'frontier.'"
   + " From there, the algorithm visits one of the frontier cells, and adds"
   + " its neighbors to the frontier as well. This pattern continues until"
   + " every cell in the grid are visited.";
