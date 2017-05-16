@@ -71,8 +71,7 @@ section {
 
 .main-page {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  min-width: 800px
 }
 
 .main-title {
@@ -88,11 +87,25 @@ section {
 }
 
 .maze-area-container {
-  width: 55%;
+  width: 50%;
+  min-width: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.m-a-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .details-and-info-container {
-  width: 45%;
+  width: 50%;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .maze-area {
@@ -102,8 +115,20 @@ section {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
   min-width: 800px;
+}
+
+.d-and-i-outer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.d-and-i-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .details-and-info {
@@ -112,8 +137,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  min-width: 300px;
+  width: 300px;
 }
 
 .info-space {
