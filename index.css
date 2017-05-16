@@ -8,8 +8,9 @@ button {
 }
 
 body {
-  background: dodgerblue;
+  background: #0f4d92;
   font-family: 'Roboto', sans-serif;
+  color: #fff;
 }
 
 h3 {
@@ -75,6 +76,13 @@ section {
 }
 
 .main-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.title {
   font-family: 'Press Start 2P', cursive;
 }
 
