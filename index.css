@@ -84,13 +84,36 @@ section {
 
 .title {
   font-family: 'Press Start 2P', cursive;
+  margin: 0;
+}
+
+.maze-area-container {
+  width: 55%;
+}
+
+.details-and-info-container {
+  width: 45%;
 }
 
 .maze-area {
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 800px;
+  align-items: center;
+  width: 100%;
+  min-width: 800px;
+}
+
+.details-and-info {
+  margin-top: 45px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 300px;
 }
 
 .info-space {
@@ -137,6 +160,10 @@ section {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.current-maze-desc {
+  width: 800px;
 }
 
 .icons {
