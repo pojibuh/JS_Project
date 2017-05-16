@@ -25,8 +25,8 @@ function switchToPrimInfo() {
   let title = document.getElementById("title");
   title.innerText = "Prim's Algorithm";
   let desc = document.getElementById("description");
-  desc.innerText = "Prim's algorithm involves choosing an initial vertex"
-  + ", then adding all of its neighbors into the 'frontier.'"
+  desc.innerText = "Prim's algorithm begins by choosing an initial cell, "
+  + " then adding all of its neighbors into the 'frontier.'"
   + " From there, the algorithm visits one of the frontier cells, and adds"
   + " its neighbors to the frontier as well. This pattern continues until"
   + " every cell in the grid are visited.";
@@ -40,8 +40,8 @@ function switchToHKInfo() {
   + " the 'Hunt' and 'Kill' phases. The algorithm begins in the kill phase,"
   + " where an initial cell is chosen. Next, a random neighbor of the first cell"
   + " is visited, and this will continue to happen until the algorithm reaches"
-  + " a dead end. This triggers the hunt phase, which will scan the grid"
-  + " , starting from the top-left, until it finds an unvisited cell with"
+  + " a dead end. This triggers the hunt phase, which will scan the grid,"
+  + " starting from the top-left, until it finds an unvisited cell with"
   + " at least one visited neighbor. The algorithm toggles between the two"
   + " phases until all cells are visited."
 }
