@@ -402,7 +402,6 @@ var primGenerator = function () {
   }, {
     key: "connectNeighbor",
     value: function connectNeighbor(cell) {
-      //pick neighbor to connect with after hunting cell down
       var chosenNeighbor = void 0;
       var visitedNeighbors = this.getNeighbors(cell).filter(function (neighbor) {
         return neighbor.visited === true;
@@ -412,7 +411,6 @@ var primGenerator = function () {
       } else if (visitedNeighbors.length > 1) {
         chosenNeighbor = visitedNeighbors[this.randomize(visitedNeighbors.length)];
       }
-      // debugger
       this.removeBorder(cell, chosenNeighbor);
     }
   }, {

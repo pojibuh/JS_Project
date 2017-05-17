@@ -109,6 +109,11 @@ section {
   font-size: 16px;
 }
 
+.buttons:hover {
+  background-color: #D3D3D3;
+  transition: All 0.5s ease;
+}
+
 .m-a-inner {
   display: flex;
   flex-direction: column;
