@@ -256,19 +256,7 @@ ul.icons li {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
-.fa-github {
-	background: transparent;
-	color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.fa-linkedin-square {
-	background: transparent;
-	color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.fa-angellist {
+.fa-github, .fa-linkedin-square, .fa-angellist, .fa-laptop {
 	background: transparent;
 	color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.35);
