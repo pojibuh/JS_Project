@@ -15,15 +15,11 @@ class primGenerator {
   }
 
   shuffleFrontier() {
-    let i = 0
-    let j = 0
-    let temp = null
-
-    for (i = this.frontier.length - 1; i > 0; i -= 1) {
-      j = Math.floor(Math.random() * (i + 1))
-      temp = this.frontier[i]
-      this.frontier[i] = this.frontier[j]
-      this.frontier[j] = temp
+    for (let i = this.frontier.length - 1; i > 0; i -= 1) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = this.frontier[i];
+      this.frontier[i] = this.frontier[j];
+      this.frontier[j] = temp;
     }
   }
 
